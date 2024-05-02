@@ -1,7 +1,10 @@
 "use client"
 
+import { HomeModernIcon } from "@heroicons/react/16/solid";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button } from "@nextui-org/react";
 import { useState } from "react";
+// import Link from 'next/link'
+
 
 const Appbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,15 +22,20 @@ const Appbar = () => {
         "Log Out",
     ];
     return (
-        <Navbar onMenuOpenChange={setIsMenuOpen}>
+        <Navbar className="shadow-md" onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="sm:hidden"
                 />
                 <NavbarBrand>
-                    {/* <AcmeLogo /> */}
-                    <p className="font-bold text-inherit">ACME</p>
+                    <Link
+                        href={"/"}
+                        className="flex items-center text:primary-400 hover:text-primary-400 transition-colors">
+                        <HomeModernIcon className="w-16" />
+                        <p className="font-bold text-inherit">Sk Real Estate</p>
+                    </Link>
+ 
                 </NavbarBrand>
             </NavbarContent>
 
