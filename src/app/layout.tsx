@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./components/providers";
 import Appbar from "./components/Appbar";
+import SignInPanel from "./components/signInPanel";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
       <body className={inter.className}>
 
         <Providers>
-          <Appbar />
+          <Appbar>
+            <SignInPanel />
+          </Appbar>
           {children}
         </Providers>
 
