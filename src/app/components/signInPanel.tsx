@@ -7,7 +7,7 @@ const SignInPanel = async () => {
     if(await isAuthenticated()) return <div>{user?.given_name}</div>;
 
     return (
-        <div className="flex gap-3">
+        <div className="flex gap-3 ">
             <Button color="primary">
                 <LoginLink>Sign In</LoginLink>
             </Button>
