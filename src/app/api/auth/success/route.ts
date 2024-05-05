@@ -25,6 +25,6 @@ export async function GET() {
       },
     });
 
-    return NextResponse.redirect("/");
+    return NextResponse.redirect("https://real-estate-sand-eta.vercel.app/");
   }
 }
