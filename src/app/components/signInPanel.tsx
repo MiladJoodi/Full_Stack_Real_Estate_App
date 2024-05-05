@@ -1,4 +1,4 @@
-import { LoginLink, getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { LoginLink, RegisterLink, getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Button } from "@nextui-org/react";
 
 const SignInPanel = async () => {
@@ -12,7 +12,7 @@ const SignInPanel = async () => {
                 <LoginLink>Sign In</LoginLink>
             </Button>
             <Button>
-                <LoginLink>Sign Up</LoginLink>
+                <RegisterLink>Sign Up</RegisterLink>
             </Button>
         </div>
     );
