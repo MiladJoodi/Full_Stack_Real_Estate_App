@@ -10,22 +10,17 @@ import prisma from "@/lib/prisma";
 
 const SignInPanel = async () => {
   const { isAuthenticated, getUser } = await getKindeServerSession();
-  const user = await getUser();
-  const dbUser = await prisma.user.findUnique({
-    where: {
+
+  if (await isAuthenticated()) {
+    const user = await getUser();
+    const dbUser = await prisma.user.findUnique({
+      where: {
         id: user?.id,
-    },
-  });
-  if (await isAuthenticated()){
-    
-  }
-    return (
-      <>
-        {dbUser!! &&
-        <UserProfilePanel user={dbUser} />
-      }
-      </>
-    );
+      },
+    });
+
+  return <>{dbUser!! && <UserProfilePanel user={dbUser} />}</>;
+}
 
   return (
     <div className="flex gap-3">
