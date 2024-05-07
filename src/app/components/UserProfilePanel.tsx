@@ -22,7 +22,7 @@ const UserProfilePanel = ({ user }: Props) => {
           as="button"
           avatarProps={{
             isBordered: true,
-            src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+            src: user.avatarUrl ?? "/profile.png"
           }}
           className="transition-transform"
           name={`${user.firstName} ${user.lastName}`}
