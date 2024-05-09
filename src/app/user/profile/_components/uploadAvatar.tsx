@@ -1,16 +1,20 @@
 "use client"
 import FileInput from "@/app/components/fileUpload";
+import { updateUserAvatar } from "@/lib/actions/user";
+import { uploadAvatar } from "@/lib/upload";
 import { PencilIcon } from "@heroicons/react/16/solid";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const UploadAvatar = () => {
+const UploadAvatar = ({ userId }: { userId: string }) => {
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     const [image, setImage] = useState<File>();
-
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const router = useRouter()
 
     return (
         <div>
@@ -23,14 +27,28 @@ const UploadAvatar = () => {
                         <>
                             <ModalHeader className="flex flex-col gap-1">Upload Avatar</ModalHeader>
                             <ModalBody>
-                                <FileInput onChange={(e)=> setImage((e as any).target.files[0])} />
+                                <FileInput onChange={(e) => setImage((e as any).target.files[0])} />
                                 {image && <Image src={URL.createObjectURL(image)} alt="" width={250} height={250} />}
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Cancel
                                 </Button>
-                                <Button color="primary" onPress={onClose}>
+                                <Button
+                                    isLoading={isSubmitting}
+                                    color="primary"
+                                    onPress={async () => {
+                                        setIsSubmitting(true);
+                                        if (!image) {
+                                            onClose();
+                                            return
+                                        }
+                                        const avatarUrl = await uploadAvatar(image);
+                                        const result = await updateUserAvatar(avatarUrl, userId);
+                                        router.refresh();
+                                        setIsSubmitting(false);
+                                        onClose()
+                                    }}>
                                     Change Avatar
                                 </Button>
                             </ModalFooter>

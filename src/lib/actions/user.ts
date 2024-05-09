@@ -10,7 +10,7 @@ export async function getUserById(id: string) {
     })
 }
 
-// uldate avatar
+// update avatar
 export async function updateUserAvatar(avatarUrl: string, userId: string){
     return await prisma.user.update({
         where:{
