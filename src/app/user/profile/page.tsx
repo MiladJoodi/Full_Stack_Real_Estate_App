@@ -1,6 +1,8 @@
 import PageTitle from "@/app/components/pageTitle";
 import { getUserById } from "@/lib/actions/user";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { Card } from "@nextui-org/react";
+import SectionTitle from "./_components/sectionTitle";
 
 const ProfilePage = async () => {
 
@@ -12,6 +14,9 @@ const ProfilePage = async () => {
     return (
         <div>
             <PageTitle title="My Profile" linkCaption="Back To Home Page" href="/" />
+            <Card className="m-4 p-4">
+                <SectionTitle title="Basic Information" />
+            </Card>
         </div>
     );
 }
