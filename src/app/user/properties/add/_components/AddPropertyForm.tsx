@@ -23,7 +23,7 @@ const AddPropertyForm = () => {
     const [step, setStep] = useState(0);
 
     return (
-        <div>
+        <div className="p-2">
             <Stepper items={steps} activeItem={step} setActiveItem={setStep} />
             {/* <button onClick={() => setStep((prev) => prev + 1)}>next step</button> */}
         </div>
