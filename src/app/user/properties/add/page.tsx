@@ -1,8 +1,8 @@
+import AddPropertyForm from "./_components/AddPropertyForm";
+
 const AddPropertyPage = () => {
     return (
-        <div>
-            AddPropertyPage
-        </div>
+        <AddPropertyForm />
     );
 }
 
