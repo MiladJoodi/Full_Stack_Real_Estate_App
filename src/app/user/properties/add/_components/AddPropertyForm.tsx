@@ -25,7 +25,7 @@ const AddPropertyForm = () => {
     return (
         <div>
             <Stepper items={steps} activeItem={step} setActiveItem={setStep} />
-            <button onClick={() => setStep((prev) => prev + 1)}>next step</button>
+            {/* <button onClick={() => setStep((prev) => prev + 1)}>next step</button> */}
         </div>
     );
 }
